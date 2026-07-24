@@ -14,15 +14,18 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 public class User {
-@Id
-@GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+    @Column(nullable = false, unique = true)
     private String email;
     @Column(name = "full_name", nullable = false)
     private String fullName;
+    @Column(nullable = false)
     private String password;
     @Column(name = "avatar_url")
     private String avatarUrl;
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
     @Column(name = "created_at", nullable = false, updatable = false)
